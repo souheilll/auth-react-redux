@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Home from './Pages/Home';
+import Profile from './Pages/Profile';
+import Header from './Components/Header';
+import { useSelector } from 'react-redux'
+import Dashboard from './Pages/Dashboard';
+import AddUser from './Pages/AddUser';
+import AddPost from './Pages/AddPost';
+
 
 function App() {
+  // const state = useSelector(state => state)
+  // console.log(state)
+  const user = useSelector(state => state.AuthReducer)
+  console.log(user)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <BrowserRouter>
+      <div className='App'>
+        {user.connect && <Header />}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/add-user' element={<AddUser />} />
+          <Route path='/add-post' element={<AddPost />}/>
+        </Routes>
+      </div>
+
+
+    </BrowserRouter>
+
   );
 }
 

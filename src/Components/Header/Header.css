@@ -1,0 +1,17 @@
+.header {
+    background-color: rgba(5, 1, 24, 0.932);
+    height: 50px;
+    margin: auto;
+}
+
+.link {
+    display: flex;
+    justify-content: space-around;
+    align-items: 'center';
+
+}
+
+.link-control {
+    text-decoration: none;
+    color:azure
+}
